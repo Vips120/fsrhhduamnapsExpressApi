@@ -1,0 +1,9 @@
+# GET http://localhost:4800/api/course/4
+
+# GET http://localhost:4800/api/courses
+POST http://localhost:4800/api/course/newcourse HTTP/1.1
+Content-Type: : application/json
+
+{
+    "name":"sql"
+}
