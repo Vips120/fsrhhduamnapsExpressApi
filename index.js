@@ -1,9 +1,26 @@
 let express = require("express");
 let app = express();
-let port = process.env.NODE_ENV || 4800;
+let morgan = require("morgan");
+let port = process.env.PORT || 4800;
 let Joi = require("@hapi/joi");
+let config = require("config");
+let U = require("./middleware/index");
 // console.log(app);
 app.use(express.json()); //in built-middleware
+
+// app.use(express.static("public"));
+// app.use(express.urlencoded());
+// app.use(U);
+app.use(morgan("tiny"));
+console.log(`Default mode: ${app.get('env')}`);
+console.log(`mode: ${process.env.NODE_ENV}`);
+
+console.log(`app name: ${config.get("name")}`);
+console.log(`mode: ${config.get("email")}`);
+console.log(`password: ${config.get("password")}`);
+
+
+
 let courses = [{ id: 1, name: "Angular" },
 { id: 2, name: "Rxjs" },
  { id: 3, name: "react native" },
